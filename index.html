@@ -3,115 +3,903 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>شکواییه رسمی اسماعیل سرحدی</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font/dist/font-face.css" rel="stylesheet">
+    <title>ثبت نام سربازی قرارگاه خاتم الانبیا</title>
     <style>
-        body {
-            font-family: 'Vazir', Arial, sans-serif; 
-            background: linear-gradient(to bottom, #f1f5f9, #e2e8f0);
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tahoma', Arial, sans-serif;
+            background: linear-gradient(135deg, #1a472a 0%, #2d5a3d 25%, #ffffff 50%, #d42c28 75%, #8b1538 100%);
             min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            border: 3px solid #d42c28;
+        }
+
+        .header {
+            background: linear-gradient(45deg, #1a472a, #2d5a3d);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><polygon points="20,20 80,20 50,60" fill="%23ffffff" opacity="0.1"/></svg>') repeat;
+            background-size: 50px 50px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 1;
+        }
+
+        .header .subtitle {
+            font-size: 1.2em;
+            color: #ffd700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .nav-tabs {
             display: flex;
-            flex-direction: column;
+            background: #2d5a3d;
+            border-bottom: 3px solid #d42c28;
+            flex-wrap: wrap;
         }
-        .letter-container {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-        .letter-container:hover {
-            transform: translateY(-5px);
-        }
-        .highlight-box {
-            background: #f8fafc;
-            border-right: 4px solid #3b82f6;
+
+        .nav-tab {
+            flex: 1;
+            min-width: 150px;
             padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 8px;
+            background: linear-gradient(to bottom, #2d5a3d, #1a472a);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border-right: 1px solid #1a472a;
         }
-        .footer {
-            background: #1e293b;
+
+        .nav-tab:last-child {
+            border-right: none;
+        }
+
+        .nav-tab:hover {
+            background: linear-gradient(to bottom, #3d6a4d, #2d5a3d);
+            transform: translateY(-2px);
+        }
+
+        .nav-tab.active {
+            background: linear-gradient(to bottom, #d42c28, #8b1538);
+            color: #ffd700;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .registration-info {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border: 2px solid #1a472a;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .tracking-code {
+            background: linear-gradient(45deg, #d42c28, #8b1538);
             color: white;
             padding: 20px;
+            border-radius: 10px;
             text-align: center;
-            margin-top: auto;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(212, 44, 40, 0.3);
         }
-        @media print {
-            body {
-                background: white;
+
+        .tracking-code h2 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            color: #ffd700;
+        }
+
+        .tracking-code .code {
+            font-size: 2em;
+            font-weight: bold;
+            letter-spacing: 3px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .info-section {
+            background: white;
+            border: 2px solid #2d5a3d;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-section h3 {
+            color: #1a472a;
+            border-bottom: 2px solid #d42c28;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #2d5a3d;
+            flex: 0 0 40%;
+        }
+
+        .info-value {
+            color: #333;
+            flex: 1;
+            text-align: left;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .gallery-item {
+            background: white;
+            border: 3px solid #2d5a3d;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item .caption {
+            padding: 15px;
+            background: linear-gradient(45deg, #1a472a, #2d5a3d);
+            color: white;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .download-section {
+            background: linear-gradient(135deg, #1a472a, #2d5a3d);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .download-btn {
+            background: linear-gradient(45deg, #d42c28, #8b1538);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px;
+            box-shadow: 0 5px 15px rgba(212, 44, 40, 0.4);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(212, 44, 40, 0.6);
+            background: linear-gradient(45deg, #e53e3a, #9c1a42);
+        }
+
+        .zip-download-btn {
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #1a472a;
+            font-size: 20px;
+            padding: 20px 40px;
+            margin: 20px 0;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .modal img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .close:hover {
+            color: #d42c28;
+        }
+
+        .pdf-viewer {
+            width: 100%;
+            height: 600px;
+            border: 2px solid #2d5a3d;
+            border-radius: 10px;
+            margin: 20px 0;
+            background: white;
+        }
+
+        .status-badge {
+            background: linear-gradient(45deg, #28a745, #20c997);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            display: inline-block;
+            margin: 5px 0;
+        }
+
+        .flag-decoration {
+            background: linear-gradient(to right, #1a472a 33%, #ffffff 33%, #ffffff 66%, #d42c28 66%);
+            height: 5px;
+            margin: 10px 0;
+            border-radius: 3px;
+        }
+
+        .file-list {
+            background: white;
+            border: 2px solid #2d5a3d;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .file-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            transition: background 0.3s ease;
+        }
+
+        .file-item:hover {
+            background: linear-gradient(90deg, #f8f9fa, #e9ecef);
+        }
+
+        .file-item:last-child {
+            border-bottom: none;
+        }
+
+        .file-name {
+            font-weight: bold;
+            color: #2d5a3d;
+        }
+
+        .file-size {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .nav-tabs {
+                flex-direction: column;
             }
-            .letter-container {
-                box-shadow: none;
-                border: 1px solid #ddd;
+            
+            .info-grid {
+                grid-template-columns: 1fr;
             }
-            .footer, .highlight-box {
-                display: none;
+            
+            .info-row {
+                flex-direction: column;
+            }
+            
+            .info-label {
+                margin-bottom: 5px;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
+    <div class="container">
+        <div class="header">
+            <h1>ثبت نام سربازی قرارگاه خاتم الانبیا</h1>
+            <p class="subtitle">سپاه پاسداران انقلاب اسلامی</p>
+            <div class="flag-decoration"></div>
+        </div>
 
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="showTab('registration')">اطلاعات ثبت نام</button>
+            <button class="nav-tab" onclick="showTab('gallery')">گالری مدارک</button>
+            <button class="nav-tab" onclick="showTab('documents')">مدارک PDF</button>
+            <button class="nav-tab" onclick="showTab('download')">دانلود مدارک</button>
+        </div>
 
-    <main class="container mx-auto px-4 py-8 flex flex-col md:flex-row gap-8">
-        <section class="md:w-2/3">
-            <div class="letter-container p-8">
-                <p class="text-center font-bold text-gray-700">بسمه تعالی</p>
-                <p class="mt-4">جناب آقای رئیس محترم اداره امریه دانش‌بنیان<br>سازمان نظام وظیفه عمومی</p>
-                <p class="mt-2 font-bold text-red-600">موضوع: اعتراض شدید به تغییر غیرمنصفانه و ناگهانی معیارهای پذیرش امریه دانش‌بنیان</p>
-                <p class="mt-4">با عرض سلام و احترام،</p>
-                <p>اینجانب اسماعیل سرحدی، دانش‌آموخته ممتاز رشته مهندسی کامپیوتر از دانشگاه سیستان و بلوچستان (ورودی ۱۳۹۸، معدل ۱۷)، با نهایت تأسف و عصبانیت مراتب اعتراض شدید خود را نسبت به تصمیم غیرمنصفانه، غیرمنتظره و کاملاً ناعادلانه افزایش حداقل امتیاز مورد نیاز برای تسهیلات امریه دانش‌بنیان از ۸۰ به ۱۹۰ اعلام می‌دارم. این تغییر ناگهانی و بدون اطلاع‌رسانی قبلی، نه‌تنها برنامه‌ریزی‌های دقیق و چندین‌ساله اینجانب را نابود کرده، بلکه زندگی شخصی و حرفه‌ای‌ام را در شهر اصفهان، جایی که به‌تنهایی و با سختی‌های فراوان زندگی می‌کنم، به مخاطره انداخته است. اینجانب این اقدام را مصداق بارز بی‌عدالتی و نادیده گرفتن زحمات متقاضیان متعهد و سخت‌کوش می‌دانم.</p>
-                
-                <h2 class="text-xl font-bold text-gray-800 mt-6">سوابق و شرایط اینجانب:</h2>
-                <p>اینجانب، متولد زاهدان، به دلیل نبود فرصت‌های شغلی و تحصیلی مناسب در منطقه محروم سیستان و بلوچستان، با مشقت فراوان به شهر اصفهان مهاجرت کرده‌ام. در حال حاضر به‌صورت مجرد و کاملاً مستقل در این شهر زندگی می‌کنم و تمامی هزینه‌های زندگی، از جمله اجاره مسکن و مخارج روزمره، از طریق اشتغال تمام‌وقت در شرکت فنی و مهندسی طیف پردازان اسپادانا تأمین می‌شود. اینجانب در این شرکت به‌عنوان برنامه‌نویس ارشد حوزه اینترنت اشیاء و مدیر تیم سیستم‌های تعبیه‌شده، نقشی کلیدی در پروژه‌های زیرساختی و فناورانه دارم که عبارتند از:</p>
-                <ul class="list-disc pr-6 mt-2">
-                    <li>طراحی و برنامه‌نویسی سیستم RCMS برای مودم‌های شرکت، که ستون فقرات ارتباطات شرکت است؛</li>
-                    <li>توسعه اپلیکیشن و کدنویسی میکروکنترلر برای کلید کولر هوشمند، محصولی نوآورانه با تقاضای بالا؛</li>
-                    <li>پیاده‌سازی الگوریتم DNP3، که برای پروتکل‌های صنعتی حیاتی است؛</li>
-                    <li>طراحی و توسعه نرم‌افزار RTU، که برای اتوماسیون صنعتی شرکت ضروری است.</li>
-                </ul>
-                <p>سوابق علمی و حرفه‌ای اینجانب گواه تلاش بی‌وقفه‌ام برای خدمت به کشور و پیشرفت فناوری است:</p>
-                <ul class="list-disc pr-6 mt-2">
-                    <li>برگزیده به‌عنوان <strong>فناور برتر دانشگاه سیستان و بلوچستان</strong> (آذر ۱۴۰۲)؛</li>
-                    <li>کسب <strong>رتبه اول بوت‌کمپ اینترنت اشیاء IOTIran</strong> با پروژه گلخانه هوشمند (خرداد ۱۴۰۰)؛</li>
-                    <li>بنیان‌گذار و مدیرعامل شرکت دانش‌بنیان زندگی هوشمند سانا (بهمن ۱۴۰۰ تا مرداد ۱۴۰۳)؛</li>
-                    <li>دارنده گواهینامه‌های تخصصی از مرکز اینترنت اشیاء ایران و پارک علم و فناوری سیستان و بلوچستان در زمینه‌های C، C++، Python، و IoT؛</li>
-                    <li>توسعه بیش از ۱۵ پروژه متن‌باز مبتنی بر ESP32، از جمله سیستم‌های مانیتورینگ دما و رطوبت، وب‌سرور، و کنترل رله.</li>
-                </ul>
+        <div class="content">
+            <!-- Registration Tab -->
+            <div id="registration" class="tab-content active">
+                <div class="tracking-code">
+                    <h2>کد رهگیری</h2>
+                    <div class="code">96J2Y2F55ZT5D53</div>
+                    <div class="status-badge">تایید نهایی شده</div>
+                </div>
 
-                <h2 class="text-xl font-bold text-gray-800 mt-6">موضوع اعتراض:</h2>
-                <p>اینجانب با اعتماد کامل به معیارهای اعلام‌شده قبلی (حداقل امتیاز ۸۰)، دو بار برای تسهیلات امریه دانش‌بنیان در سامانه prs.daneshbonyan.ir ثبت‌نام کردم، اما هر دو درخواست به دلیل افزایش غیرمنطقی و ناگهانی حداقل امتیاز به ۱۹۰ رد شد. این تغییر، بدون هیچ‌گونه اطلاع‌رسانی قبلی یا مهلت منطقی برای تطبیق، برنامه‌ریزی‌های چندین‌ساله اینجانب را که با خون دل و زحمت بسیار انجام شده بود، به‌کلی نابود کرد. اینجانب پس از اتمام تحصیلات در دانشگاه سراسری سیستان و بلوچستان، با هدف خدمت به صنعت دانش‌بنیان کشور، به شرکت طیف پردازان اسپادانا پیوستم و آینده‌ام را بر اساس امکان استفاده از امریه برنامه‌ریزی کردم. این تصمیم غیرمنصفانه نه‌تنها مرا، بلکه بسیاری از جوانان متعهد و نخبه دیگر را که با حسن نیت برنامه‌ریزی کرده بودند، در موقعیت ناامیدکننده‌ای قرار داده است.</p>
+                <div class="registration-info">
+                    <div class="info-row">
+                        <span class="info-label">تاریخ و زمان ثبت نام:</span>
+                        <span class="info-value">1404/04/30 ساعت 12:00</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">تاریخ و زمان تایید نهایی:</span>
+                        <span class="info-value">1404/04/30 ساعت 12:02</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">تاریخ اعزام:</span>
+                        <span class="info-value">1404/06/01</span>
+                    </div>
+                </div>
 
-                <h2 class="text-xl font-bold text-gray-800 mt-6">تأثیرات این تصمیم غیرمنصفانه:</h2>
-                <p>این تغییر ناگهانی، زندگی اینجانب را به معنای واقعی کلمه به هم ریخته است. زندگی مستقل در شهر اصفهان، بدون هیچ‌گونه حمایت مالی یا خانوادگی، هزینه‌های سنگینی از جمله اجاره مسکن، قبوض، و مخارج روزمره را به من تحمیل کرده است. عدم پذیرش درخواست امریه، توانایی من برای ادامه فعالیت حرفه‌ای و تأمین مالی زندگی‌ام را به خطر انداخته است. علاوه بر این، شرکت طیف پردازان اسپادانا به تخصص و حضور اینجانب در پروژه‌های حساس خود وابسته است. توقف فعالیت من، نه‌تنها به ضرر شخص بنده، بلکه به زیان پیشرفت پروژه‌های دانش‌بنیان شرکت و در نهایت اقتصاد ملی خواهد بود. اینجانب از این بی‌عدالتی عمیقاً خشمگین و سرخورده‌ام و این تصمیم را توهینی به سال‌ها تلاش و تعهد خود می‌دانم.</p>
+                <div class="info-grid">
+                    <div class="info-section">
+                        <h3>مشخصات فردی</h3>
+                        <div class="info-row">
+                            <span class="info-label">نام:</span>
+                            <span class="info-value">اسماعیل</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">نام خانوادگی:</span>
+                            <span class="info-value">سرحدی</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">نام پدر:</span>
+                            <span class="info-value">محمدرضا</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">کد ملی:</span>
+                            <span class="info-value">3611257648</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">استان محل سکونت:</span>
+                            <span class="info-value">اصفهان</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">شهرستان محل سکونت:</span>
+                            <span class="info-value">اصفهان</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">تاریخ تولد:</span>
+                            <span class="info-value">1378/03/14</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">وضعیت تاهل:</span>
+                            <span class="info-value">مجرد</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">تلفن ثابت:</span>
+                            <span class="info-value">09118113718</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">شماره همراه:</span>
+                            <span class="info-value">09386898704</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">وضعیت معاف از رزم:</span>
+                            <span class="info-value">نیستم</span>
+                        </div>
+                    </div>
 
-                <h2 class="text-xl font-bold text-gray-800 mt-6">درخواست‌های فوری:</h2>
-                <p>با توجه به این ظلم آشکار، از جنابعالی به‌عنوان مسئول این حوزه اکیداً تقاضا دارم:</p>
-                <ol class="list-decimal pr-6 mt-2">
-                    <li>دستور بازنگری فوری و لغو افزایش غیرمنطقی حداقل امتیاز را صادر کنید؛</li>
-                    <li>سوابق علمی و حرفه‌ای برجسته اینجانب، که به‌وضوح شایستگی من را اثبات می‌کند، به‌عنوان مبنای بررسی مجدد درخواست در نظر گرفته شود؛</li>
-                    <li>برای متقاضیانی که با اعتماد به معیارهای قبلی برنامه‌ریزی کرده‌اند، سازوکاری عادلانه و شفاف برای ارزیابی مجدد ایجاد کنید؛</li>
-                    <li>با توجه به شرایط دشوار زندگی‌ام در اصفهان و نقش حیاتی‌ام در پروژه‌های دانش‌بنیان، درخواستم را به‌صورت ویژه و خارج از نوبت بررسی کنید؛</li>
-                    <li>پاسخ روشنی در خصوص دلایل این تغییر ناگهانی و عدم اطلاع‌رسانی به متقاضیان ارائه دهید.</li>
-                </ol>
+                    <div class="info-section">
+                        <h3>مشخصات تحصیلی</h3>
+                        <div class="info-row">
+                            <span class="info-label">مقطع تحصیلی:</span>
+                            <span class="info-value">کارشناسی</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">نام دانشگاه:</span>
+                            <span class="info-value">دانشگاه سیستان و بلوچستان</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">رشته تحصیلی:</span>
+                            <span class="info-value">مهندسی کامپیوتر</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">گرایش:</span>
+                            <span class="info-value">مهندسی کامپیوتر</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">سال ورود:</span>
+                            <span class="info-value">1398</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">سال اخذ مدرک:</span>
+                            <span class="info-value">1403</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">معدل:</span>
+                            <span class="info-value">14.42</span>
+                        </div>
+                    </div>
 
-                <h2 class="text-xl font-bold text-gray-800 mt-6">پیوست‌ها:</h2>
-                <ul class="list-disc pr-6 mt-2">
-                    <li>کپی مدارک تحصیلی (کارشناسی مهندسی کامپیوتر، دانشگاه سیستان و بلوچستان)؛</li>
-                    <li>گواهینامه‌های تخصصی (بوت‌کمپ اینترنت اشیاء، پارک علم و فناوری سیستان و بلوچستان، برنامه‌نویسی C، C++، Python)؛</li>
-                    <li>مستندات سوابق شغلی (تاییدیه شرکت طیف پردازان اسپادانا، شرکت دانش‌بنیان سانا)؛</li>
-                    <li>مستندات جوایز و افتخارات (فناور برتر دانشگاه، رتبه اول بوت‌کمپ IOTIran)؛</li>
-                    <li>لیست پروژه‌های متن‌باز (لینک به مخازن GitHub).</li>
-                </ul>
-
-                <p class="mt-6">در پایان، ضمن ابراز خشم و ناامیدی عمیق از این بی‌عدالتی، از جنابعالی انتظار دارم که با بررسی فوری و منصفانه این شکواییه، گامی در جهت احقاق حق اینجانب و سایر متقاضیان مظلوم بردارید. اینجانب آماده ارائه هرگونه مدارک تکمیلی یا توضیحات حضوری هستم و امیدوارم این ظلم آشکار هرچه سریع‌تر رفع شود.</p>
-                <p class="mt-4 italic">با احترام و اعتراض،<br>اسماعیل سرحدی<br>شماره تماس: ۰۹۳۸۶۸۹۸۷۰۴<br>پست الکترونیک: esi.shd@gmail.com<br>آدرس: اصفهان<br>تاریخ: ۲۲ اردیبهشت ۱۴۰۴</p>
+                    <div class="info-section">
+                        <h3>سوابق بسیجی</h3>
+                        <div class="info-row">
+                            <span class="info-label">حکم مسئولیت شورای حوزه مقاومت:</span>
+                            <span class="info-value">ندارم</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">دوره تکمیلی 45 روزه بسیج:</span>
+                            <span class="info-value">ندارم</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">فرزند جانباز، ایثارگر، پاسدار:</span>
+                            <span class="info-value">نیستم</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">بسیج عادی (الزامی):</span>
+                            <span class="info-value">24 ماه</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">بسیج فعال:</span>
+                            <span class="info-value">144 ماه</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">مدت خدمت قبلی در سپاه:</span>
+                            <span class="info-value">0 ماه</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </section>
-    </main>
 
-   
+            <!-- Gallery Tab -->
+            <div id="gallery" class="tab-content">
+                <h2 style="color: #1a472a; text-align: center; margin-bottom: 30px;">گالری مدارک و تصاویر</h2>
+                
+                <div class="gallery" id="gallery-container">
+                    <div class="gallery-item" onclick="openModal('./شناسنامه')">
+                        <img src="./شناسنامه" alt="شناسنامه" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 300 200%22><rect width=%22300%22 height=%22200%22 fill=%22%23f8f9fa%22/><text x=%22150%22 y=%22100%22 text-anchor=%22middle%22 fill=%22%236c757d%22 font-size=%2216%22>شناسنامه</text></svg>'">
+                        <div class="caption">شناسنامه</div>
+                    </div>
+                    
+                    <div class="gallery-item" onclick="openModal('./کارت ملی.jpeg')">
+                        <img src="./کارت ملی.jpeg" alt="کارت ملی" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 300 200%22><rect width=%22300%22 height=%22200%22 fill=%22%23f8f9fa%22/><text x=%22150%22 y=%22100%22 text-anchor=%22middle%22 fill=%22%236c757d%22 font-size=%2216%22>کارت ملی</text></svg>'">
+                        <div class="caption">کارت ملی</div>
+                    </div>
+                    
+                    <div class="gallery-item" onclick="openModal('./مدرک دانشگاه.jpeg')">
+                        <img src="./مدرک دانشگاه.jpeg" alt="مدرک دانشگاه" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 300 200%22><rect width=%22300%22 height=%22200%22 fill=%22%23f8f9fa%22/><text x=%22150%22 y=%22100%22 text-anchor=%22middle%22 fill=%22%236c757d%22 font-size=%2216%22>مدرک دانشگاه</text></svg>'">
+                        <div class="caption">مدرک دانشگاه</div>
+                    </div>
+                    
+                    <div class="gallery-item" onclick="openModal('./مدرک بسیج یک.jpeg')">
+                        <img src="./مدرک بسیج یک.jpeg" alt="مدرک بسیج یک" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 300 200%22><rect width=%22300%22 height=%22200%22 fill=%22%23f8f9fa%22/><text x=%22150%22 y=%22100%22 text-anchor=%22middle%22 fill=%22%236c757d%22 font-size=%2216%22>مدرک بسیج یک</text></svg>'">
+                        <div class="caption">مدرک بسیج یک</div>
+                    </div>
+                    
+                    <div class="gallery-item" onclick="openModal('./مدرک بسیج 2.jpeg')">
+                        <img src="./مدرک بسیج 2.jpeg" alt="مدرک بسیج 2" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 300 200%22><rect width=%22300%22 height=%22200%22 fill=%22%23f8f9fa%22/><text x=%22150%22 y=%22100%22 text-anchor=%22middle%22 fill=%22%236c757d%22 font-size=%2216%22>مدرک بسیج 2</text></svg>'">
+                        <div class="caption">مدرک بسیج 2</div>
+                    </div>
+                    
+                    <div class="gallery-item" onclick="openModal('./مدرک بسیج 3 .jpeg')">
+                        <img src="./مدرک بسیج 3 .jpeg" alt="مدرک بسیج 3" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 300 200%22><rect width=%22300%22 height=%22200%22 fill=%22%23f8f9fa%22/><text x=%22150%22 y=%22100%22 text-anchor=%22middle%22 fill=%22%236c757d%22 font-size=%2216%22>مدرک بسیج 3</text></svg>'">
+                        <div class="caption">مدرک بسیج 3</div>
+                    </div>
+                    
+                    <div class="gallery-item" onclick="openModal('./مدرک بسیج 4.jpeg')">
+                        <img src="./مدرک بسیج 4.jpeg" alt="مدرک بسیج 4" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 300 200%22><rect width=%22300%22 height=%22200%22 fill=%22%23f8f9fa%22/><text x=%22150%22 y=%22100%22 text-anchor=%22middle%22 fill=%22%236c757d%22 font-size=%2216%22>مدرک بسیج 4</text></svg>'">
+                        <div class="caption">مدرک بسیج 4</div>
+                    </div>
+                    
+                    <div class="gallery-item" onclick="openModal('./برگه سبز اعزام .jpeg')">
+                        <img src="./برگه سبز اعزام .jpeg" alt="برگه سبز اعزام" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 300 200%22><rect width=%22300%22 height=%22200%22 fill=%22%23f8f9fa%22/><text x=%22150%22 y=%22100%22 text-anchor=%22middle%22 fill=%22%236c757d%22 font-size=%2216%22>برگه سبز اعزام</text></svg>'">
+                        <div class="caption">برگه سبز اعزام</div>
+                    </div>
+                    
+                    <div class="gallery-item" onclick="openModal('./پیوست برگه سبز برای اعزام یک شش .jpeg')">
+                        <img src="./پیوست برگه سبز برای اعزام یک شش .jpeg" alt="پیوست برگه سبز" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 300 200%22><rect width=%22300%22 height=%22200%22 fill=%22%23f8f9fa%22/><text x=%22150%22 y=%22100%22 text-anchor=%22middle%22 fill=%22%236c757d%22 font-size=%2214%22>پیوست برگه سبز</text></svg>'">
+                        <div class="caption">پیوست برگه سبز برای اعزام</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Documents Tab -->
+            <div id="documents" class="tab-content">
+                <h2 style="color: #1a472a; text-align: center; margin-bottom: 30px;">مدارک PDF</h2>
+                <div style="text-align: center; margin: 20px 0;">
+                    <h3 style="color: #2d5a3d;">فرم ثبت نام اسماعیل سرحدی</h3>
+                    <iframe src="./ثبت نام اسماعیل سرحدی .pdf" class="pdf-viewer" onload="this.style.display='block'" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    </iframe>
+                    <div style="background: linear-gradient(135deg, #f8f9fa, #e9ecef); border: 2px solid #2d5a3d; border-radius: 10px; padding: 40px; text-align: center; display: none;">
+                        <p style="color: #666; font-size: 18px;">📄 فایل PDF یافت نشد</p>
+                        <p style="color: #999; margin-top: 10px;">فایل "ثبت نام اسماعیل سرحدی .pdf" در کنار فایل HTML قرار دهید</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Download Tab -->
+            <div id="download" class="tab-content">
+                <div class="download-section">
+                    <h2 style="color: #ffd700; margin-bottom: 20px;">دانلود مدارک</h2>
+                    <p style="margin-bottom: 30px;">تمامی مدارک و فایل‌های مرتبط با ثبت نام شما در ادامه قابل دانلود می‌باشد.</p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                        <button class="download-btn" onclick="downloadFile('./ثبت نام اسماعیل سرحدی .pdf', 'فرم ثبت نام اسماعیل سرحدی.pdf')">
+                            📄 باز کردن فرم ثبت نام
+                        </button>
+                        <button class="download-btn" onclick="downloadMultipleFiles(['./شناسنامه', './کارت ملی.jpeg'], 'مدارک هویتی')">
+                            🆔 باز کردن مدارک هویتی
+                        </button>
+                        <button class="download-btn" onclick="downloadFile('./مدرک دانشگاه.jpeg', 'مدرک دانشگاه.jpeg')">
+                            🎓 باز کردن مدرک دانشگاه
+                        </button>
+                        <button class="download-btn" onclick="downloadMultipleFiles(['./مدرک بسیج یک.jpeg', './مدرک بسیج 2.jpeg', './مدرک بسیج 3 .jpeg', './مدرک بسیج 4.jpeg'], 'مدارک بسیجی')">
+                            🛡️ باز کردن مدارک بسیجی
+                        </button>
+                        <button class="download-btn" onclick="downloadMultipleFiles(['./برگه سبز اعزام .jpeg', './پیوست برگه سبز برای اعزام یک شش .jpeg'], 'مدارک اعزام')">
+                            📋 باز کردن مدارک اعزام
+                        </button>
+                        <button class="download-btn zip-download-btn" onclick="downloadAllAsZip()" style="grid-column: 1 / -1;">
+                            🗂️ باز کردن همه فایل‌ها همزمان
+                        </button>
+                    </div>
+                </div>
+                
+                <div style="background: white; border: 2px solid #2d5a3d; border-radius: 10px; padding: 20px; margin-top: 20px;">
+                    <h3 style="color: #1a472a; margin-bottom: 15px;">فهرست کامل فایل‌ها:</h3>
+                    <ul style="color: #333; line-height: 2;">
+                        <li>📄 ثبت نام اسماعیل سرحدی .pdf</li>
+                        <li>🆔 شناسنامه</li>
+                        <li>🆔 کارت ملی.jpeg</li>
+                        <li>🎓 مدرک دانشگاه.jpeg</li>
+                        <li>🛡️ مدرک بسیج یک.jpeg</li>
+                        <li>🛡️ مدرک بسیج 2.jpeg</li>
+                        <li>🛡️ مدرک بسیج 3 .jpeg</li>
+                        <li>🛡️ مدرک بسیج 4.jpeg</li>
+                        <li>📋 برگه سبز اعزام .jpeg</li>
+                        <li>📋 پیوست برگه سبز برای اعزام یک شش .jpeg</li>
+                    </ul>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, #fff3cd, #ffeeba); border: 2px solid #ffc107; border-radius: 10px; padding: 20px; margin-top: 20px;">
+                    <h4 style="color: #856404; margin-bottom: 10px;">⚠️ توجه مهم:</h4>
+                    <p style="color: #856404;">
+                        متقاضی محترم، اطلاعات جناب عالی ثبت نهایی شده و امکان ویرایش اطلاعات وجود ندارد. 
+                        در صورت پذیرش نهایی، مراتب به صورت تلفنی اطلاع رسانی خواهد شد.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div style="background: linear-gradient(45deg, #1a472a, #2d5a3d); color: white; text-align: center; padding: 20px;">
+            <div class="flag-decoration"></div>
+            <p>تمامی حقوق این سایت متعلق به قرارگاه سازندگی خاتم الانبیا(ص) می‌باشد</p>
+            <p style="font-size: 0.9em; color: #ccc; margin-top: 10px;">سپاه پاسداران انقلاب اسلامی</p>
+        </div>
+    </div>
+
+    <!-- Modal for image viewing -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="">
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+    <script>
+        function showTab(tabName) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.nav-tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+
+        function openModal(imageSrc) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            
+            modalImg.src = imageSrc;
+            modal.style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+
+        // باز کردن فایل تکی در تب جدید
+        function downloadFile(filePath, fileName) {
+            try {
+                // باز کردن فایل در تب جدید
+                window.open(filePath, '_blank');
+            } catch (error) {
+                alert('خطا در باز کردن فایل: ' + fileName);
+            }
+        }
+
+        // باز کردن چندین فایل همزمان
+        function downloadMultipleFiles(filePaths, groupName) {
+            let openedCount = 0;
+            
+            filePaths.forEach((filePath, index) => {
+                setTimeout(() => {
+                    try {
+                        window.open(filePath, '_blank');
+                        openedCount++;
+                    } catch (error) {
+                        console.log(`خطا در باز کردن: ${filePath}`);
+                    }
+                }, index * 200); // تاخیر 200ms بین هر تب
+            });
+            
+            alert(`باز کردن ${groupName}...\n${filePaths.length} فایل در تب‌های جدید باز می‌شوند.\n\nنکته: اگر مرورگر popup ها را مسدود کرد، اجازه دهید.`);
+        }
+
+        // باز کردن همه فایل‌ها همزمان
+        function downloadAllAsZip() {
+            // فهرست کامل فایل‌ها
+            const allFiles = [
+                './ثبت نام اسماعیل سرحدی .pdf',
+                './شناسنامه',
+                './کارت ملی.jpeg',
+                './مدرک دانشگاه.jpeg',
+                './مدرک بسیج یک.jpeg',
+                './مدرک بسیج 2.jpeg',
+                './مدرک بسیج 3 .jpeg',
+                './مدرک بسیج 4.jpeg',
+                './برگه سبز اعزام .jpeg',
+                './پیوست برگه سبز برای اعزام یک شش .jpeg'
+            ];
+
+            // اول بررسی می‌کنیم کدوم فایل‌ها موجودن
+            if (confirm('آیا می‌خواهید همه فایل‌ها در تب‌های جدید باز شوند؟\n\nتوجه: ممکن است مرورگر popup ها را مسدود کند.')) {
+                let openedCount = 0;
+                
+                allFiles.forEach((filePath, index) => {
+                    setTimeout(() => {
+                        try {
+                            window.open(filePath, '_blank');
+                            openedCount++;
+                        } catch (error) {
+                            console.log(`خطا در باز کردن: ${filePath}`);
+                        }
+                    }, index * 300); // تاخیر 300ms بین هر تب
+                });
+
+                setTimeout(() => {
+                    alert(`✅ تلاش برای باز کردن ${allFiles.length} فایل انجام شد!\n\nاز هر تب می‌توانید فایل را Save As کنید.`);
+                }, allFiles.length * 300 + 1000);
+            }
+        }
+
+        // دانلود با کلیک راست
+        function forceDownload(filePath, fileName) {
+            try {
+                fetch(filePath)
+                    .then(response => response.blob())
+                    .then(blob => {
+                        const url = window.URL.createObjectURL(blob);
+                        const link = document.createElement('a');
+                        link.href = url;
+                        link.download = fileName || filePath.split('/').pop();
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                        window.URL.revokeObjectURL(url);
+                    })
+                    .catch(error => {
+                        console.error('خطا در دانلود:', error);
+                        // اگر fetch کار نکرد، با روش ساده امتحان کن
+                        window.open(filePath, '_blank');
+                    });
+            } catch (error) {
+                window.open(filePath, '_blank');
+            }
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('imageModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // راه‌اندازی اولیه
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add loading animation to gallery items
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            galleryItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(20px)';
+                    item.style.transition = 'all 0.5s ease';
+                    
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    }, 100);
+                }, index * 100);
+            });
+
+            // Add hover effect to info rows
+            const infoRows = document.querySelectorAll('.info-row');
+            infoRows.forEach(row => {
+                row.addEventListener('mouseenter', function() {
+                    this.style.background = 'linear-gradient(90deg, #f8f9fa, #e9ecef)';
+                    this.style.transform = 'translateX(5px)';
+                    this.style.transition = 'all 0.3s ease';
+                });
+                
+                row.addEventListener('mouseleave', function() {
+                    this.style.background = 'transparent';
+                    this.style.transform = 'translateX(0)';
+                });
+            });
+
+            // چک کردن وجود فایل‌ها
+            checkFileAvailability();
+        });
+
+        // چک کردن وجود فایل‌ها
+        async function checkFileAvailability() {
+            const files = [
+                './ثبت نام اسماعیل سرحدی .pdf',
+                './شناسنامه',
+                './کارت ملی.jpeg',
+                './مدرک دانشگاه.jpeg',
+                './مدرک بسیج یک.jpeg',
+                './مدرک بسیج 2.jpeg',
+                './مدرک بسیج 3 .jpeg',
+                './مدرک بسیج 4.jpeg',
+                './برگه سبز اعزام .jpeg',
+                './پیوست برگه سبز برای اعزام یک شش .jpeg'
+            ];
+
+            let availableCount = 0;
+            
+            for (const file of files) {
+                try {
+                    const response = await fetch(file, { method: 'HEAD' });
+                    if (response.ok) {
+                        availableCount++;
+                    }
+                } catch (error) {
+                    // فایل موجود نیست
+                }
+            }
+
+            console.log(`📁 ${availableCount} از ${files.length} فایل موجود است`);
+            
+            if (availableCount === 0) {
+                setTimeout(() => {
+                    alert('💡 راهنما:\n\nبرای نمایش فایل‌های واقعی:\n' +
+                          '1. فایل‌هایتان را در کنار فایل HTML کپی کنید\n' +
+                          '2. نام فایل‌ها باید دقیقاً مطابق لیست باشد\n' +
+                          '3. صفحه را رفرش کنید\n\n' +
+                          'در حال حاضر تصاویر نمونه نمایش داده می‌شوند.');
+                }, 3000);
+            }
+        }
+    </script>
 </body>
 </html>
